@@ -1,0 +1,15 @@
+#!/bin/bash
+#SBATCH --job-name=train_GMP
+#SBATCH --ntasks=16
+#SBATCH --mem=180g
+#SBATCH --time=4:00:00
+#SBATCH --partition=stats-gaann
+#SBATCH --gres=gpu
+#SBATCH --error=train_GMP.%J.err
+#SBATCH --output=train_GMP.%J.out
+
+module purge
+module load anaconda
+conda activate $COMMON/tfp_for_TN
+
+time python Retraining_GMP_model.py
