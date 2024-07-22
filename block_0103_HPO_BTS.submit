@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --job-name=HPO_BTS_blk_0103
+#SBATCH --ntasks=16
+#SBATCH --mem=80g
+#SBATCH --time=5:00:00
+#SBATCH --partition=stats-gaann
+#SBATCH --error=HPO_BTS_blk_0103.%J.err
+#SBATCH --output=HPO_BTS_blk_0103.%J.out
+
+module purge
+module load anaconda
+conda activate $COMMON/tfp_env_TN_CPU
+
+python HPO_BTS_block_0103.py 
